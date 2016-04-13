@@ -143,8 +143,53 @@ instance_of_my_class = my_class.new
 # on which it’s defined. The idea of a class method is that you send a message to the object that’s the class
 # rather than to one of the class’s instances. 
 
-class Ticket
-	def Ticket.most_expensive(*tickets)
+class Ticket3
+	attr_accessor :price
+	attr_reader :venue, :date
+
+	def initialize(venue, date)
+		@venue = venue
+		@date = date
+	end
+
+	def Ticket3.most_expensive(*tickets)
   	tickets.max_by(&:price)
 	end
 end
+
+th = Ticket3.new("Town Hall","11/12/13")
+cc = Ticket3.new("Convention Center","12/13/14/")
+fg = Ticket3.new("Fairgrounds", "13/14/15/")
+th.price = 12.55
+cc.price = 10.00
+fg.price = 18.00
+highest = Ticket3.most_expensive(th,cc,fg)
+puts "The highest-priced ticket is the one for #{highest.venue}."
+
+# Class methods
+# A method which can be implemented on its class object but not through its instances of class object.
+
+# Some operations pertaining to a class can’t be performed by individual instances of that class.
+# The new method is an excellent example. We call Ticket.new because, until we’ve created an 
+# individual ticket, we can’t send it any messages! Besides, the job of spawning a new object 
+# logically belongs to the class. It doesn’t make sense for instances of Ticket to spawn each other. 
+# But it does make sense for the instance-creation process to be centralized as an activity of the class Ticket.
+# Another similar case is the built-in Ruby method File.open
+
+class Temperature
+  def Temperature.c2f(celsius)
+    celsius * 9.0 / 5 + 32
+  end
+
+  def Temperature.f2c(fahrenheit)
+    (fahrenheit - 32) * 5 / 9.0
+  end
+end
+
+
+
+puts Temperature.c2f(100)
+
+# Ticket#price refers to the instance method price in the class Ticket.
+# Ticket.most_expensive refers to the class method most_expensive in the class Ticket.
+# Ticket::most_expensive also refers to the class method most_expensive in the class Ticket.
