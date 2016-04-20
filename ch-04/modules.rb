@@ -25,3 +25,15 @@ my_module.say_hello
 # The main difference between inheriting from a class and mixing 
 # in a module is that you can mix in more than one module where as no class
 # can inherit from more than one class.
+
+# Syntax of require/load vs. syntax of include
+
+# require and load take strings as their arguments, whereas include takes the name 
+# of a module in the form of a constant
+
+# it’s because require and load are locating and loading disk files, whereas include 
+# and prepend perform a program-space, in-memory operation that has nothing to do 
+# with files. It’s a common sequence to require a feature and then include a module 
+# that the feature defines. 
+
+# It is a common practice to name class as a noun whereas to module as adjective.
