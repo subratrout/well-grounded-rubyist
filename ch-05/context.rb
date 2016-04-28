@@ -10,7 +10,7 @@ class C
 
   def self.x 
     puts "Class method C.x: "
-    put "self is #{self}"
+    puts "self is #{self}"
   end
 
   def m
@@ -19,8 +19,6 @@ class C
   end
 end
 
-c = Class.new
-
-puts c.x
-
+puts C.x
+c = C.new
 puts c.m
