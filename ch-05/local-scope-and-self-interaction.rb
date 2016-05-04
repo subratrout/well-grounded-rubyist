@@ -24,6 +24,7 @@ end
 c = C.new
 c.x("First value for a", true)
 
+
 # OUTPUT::
 
 # here's the inspect-string for 'self': #<C:0x00000000cfa288>
@@ -38,3 +39,8 @@ c.x("First value for a", true)
 
 # It is also possible to change self without entering a new local scope with the instance_eval
 # and instance_exec methods.
+
+puts "Another way......."
+d = C.new
+d.x("Some other value for a when false: ", false)
+
