@@ -76,3 +76,27 @@ conn_abbrev = state_hash["Connecticut"]
 two_states =  state_hash.values_at("New Jersey", "Delaware")
 
 p two_states
+
+# By default, when you ask a hash for the value corresponding to a nonexistent key, you get nil:
+h7 = Hash.new
+
+puts "value of a hash with no key: #{h7["no_such_key"]}"
+# But you can specify a different default value by supplying an argument to Hash.new:
+# 
+# COMBINING Hashes with another Hash can occur in two ways
+# 
+# 1. Destructive way: Where where the first hash has the key/value pairs from the second hash added to it directly; 
+# The destructive operation is performed with the update method. Entries in the first hash are overwritten permanently 
+# if the second hash has a corresponding key:
+# 
+h8 = {sam: "John", jones: "Jane"}
+h9 = {sam: "Jim"}
+
+h10 = h8.update(h9)
+puts h10
+# 2. In nondestructive way, where a new, third hash is created that combines the elements of the original two.
+h11 = {sam: "John", jones: "Jane"}
+h12 = {sam: "Jim"}
+# when the two hashes being merged share a key, the second hash (h12, in this example) wins, ie its val
+h13 = h11.merge(h12)
+puts h13
